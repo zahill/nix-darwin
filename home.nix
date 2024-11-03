@@ -4,7 +4,7 @@
   home.username = "zach";
   home.homeDirectory = "/Users/zach";
 
-  home.files = {
+  home.file = {
     ".zshrc".source = ./dotfiles/.zshrc;
     ".config/nvim".source = ./dotfiles/nvim;
     ".config/kitty".source = ./dotfiles/kitty;
