@@ -18,9 +18,11 @@
       url = "github:nikitabobko/homebrew-tap";
       flake = false;
     };
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, nikitabobko }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, nikitabobko, home-manager }:
   let
     configuration = { pkgs, config, ... }: {
       # Allow installing unfree packages
@@ -50,11 +52,15 @@
         pkgs.fira-code-nerdfont
       ];
 
+      users.users.zach.home = "/Users/zach";
+      nix.configureBuildUsers = true;
+
       homebrew = {
         enable = true;
         casks = [
           "hammerspoon"
           "brave-browser"
+          "wireshark"
           "nikitabobko/tap/aerospace"
         ];
         masApps = {};
@@ -98,6 +104,7 @@
           ];
           dock.persistent-others = [];
           finder.FXPreferredViewStyle = "clmv";
+          finder.AppleShowAllExtensions = true;
           NSGlobalDomain.AppleICUForce24HourTime = true;
           NSGlobalDomain.AppleInterfaceStyle = "Dark";
           NSGlobalDomain.KeyRepeat = 2;
@@ -108,9 +115,6 @@
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
-
-      # Enable alternative shell support in nix-darwin.
-      programs.zsh.enable = true;
 
       # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
@@ -125,7 +129,8 @@
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#simple
-    darwinConfigurations."macbook" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."Zachs-MacBook-Pro" = nix-darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
       modules = [
         configuration
         nix-homebrew.darwinModules.nix-homebrew
@@ -137,10 +142,16 @@
             autoMigrate = true;
           };
         }
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.zach = import ./home.nix;
+        }
       ];
     };
 
     # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."macbook".pkgs;
+    darwinPackages = self.darwinConfigurations."Zachs-MacBook-Pro".pkgs;
   };
 }
