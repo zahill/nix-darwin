@@ -7,7 +7,7 @@
   home.file = {
     ".zshrc".source = ./dotfiles/.zshrc;
     ".config/nvim".source = ./dotfiles/nvim;
-    ".config/kitty".source = ./dotfiles/kitty;
+    ".config/kitty".source = ~/.config/nix-darwin/dotfiles/kitty;
     ".config/aerospace".source = ./dotfiles/aerospace;
     ".config/neofetch".source = ./dotfiles/neofetch;
     ".config/raycast".source = ./dotfiles/raycast;
