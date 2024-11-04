@@ -52,7 +52,10 @@
         pkgs.fira-code-nerdfont
       ];
 
-      users.users.zach.home = "/Users/zach";
+      users.users.zach = {
+        name = "zach";
+        home = "/Users/zach";
+      };
       nix.configureBuildUsers = true;
 
       homebrew = {
