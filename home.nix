@@ -11,6 +11,7 @@
     ".config/neofetch".source = dotfiles/neofetch;
     ".config/raycast".source = dotfiles/raycast;
     ".config/kitty".source = dotfiles/kitty-conf;
+    ".config/starship".source = dotfiles/starship;
   };
 
   home.stateVersion = "24.05";
