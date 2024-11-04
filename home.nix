@@ -6,7 +6,7 @@
 
   home.file = {
     ".zshrc".source = ./dotfiles/.zshrc;
-    #".config/nvim".source = dotfiles/nvim;
+    ".config/nvim".source = dotfiles/nvim;
     #".config/kitty".source = dotfiles/kitty;
     #".config/aerospace".source = dotfiles/aerospace;
     #".config/neofetch".source = dotfiles/neofetch;
