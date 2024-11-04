@@ -10,7 +10,7 @@
     ".config/aerospace".source = dotfiles/aerospace;
     ".config/neofetch".source = dotfiles/neofetch;
     ".config/raycast".source = dotfiles/raycast;
-    ".config/kitty".source = dotfiles/kitty;
+    ".config/kitty".source = dotfiles/kitty-conf;
   };
 
   home.stateVersion = "24.05";
