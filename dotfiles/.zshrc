@@ -42,7 +42,7 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
-alias ls='eza --all --icons=always"'
+alias ls='eza --all --icons=always'
 
 # zoxide
 eval "$(zoxide init zsh)"
