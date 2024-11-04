@@ -5,9 +5,9 @@
   home.homeDirectory = "/Users/zach";
 
   home.file = {
-    ".zshrc".source = ./dotfiles/.zshrc;
+    ".zshrc".source = dotfiles/.zshrc;
     ".config/nvim".source = dotfiles/nvim;
-    #".config/kitty".source = dotfiles/kitty;
+    ".config/kitty".source = dotfiles/kitty;
     #".config/aerospace".source = dotfiles/aerospace;
     #".config/neofetch".source = dotfiles/neofetch;
     #".config/raycast".source = dotfiles/raycast;
