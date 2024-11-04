@@ -63,7 +63,6 @@
         casks = [
           "hammerspoon"
           "brave-browser"
-          "wireshark"
           "nikitabobko/tap/aerospace"
         ];
         masApps = {};
