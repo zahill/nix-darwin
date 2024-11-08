@@ -14,15 +14,9 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-    nikitabobko = {
-      url = "github:nikitabobko/homebrew-tap";
-      flake = false;
-    };
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, nikitabobko, home-manager }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, }:
   let
     configuration = { pkgs, config, ... }: {
       # Allow installing unfree packages
@@ -63,7 +57,6 @@
         casks = [
           "hammerspoon"
           "brave-browser"
-          "nikitabobko/tap/aerospace"
         ];
         masApps = {};
         onActivation.cleanup = "zap";
@@ -143,12 +136,6 @@
             user = "zach";
             autoMigrate = true;
           };
-        }
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.zach = import ./home.nix;
         }
       ];
     };
